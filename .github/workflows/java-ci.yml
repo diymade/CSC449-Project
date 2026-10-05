@@ -29,8 +29,10 @@ jobs:
     - name: Compile Java files
       run: |
         mkdir classes
-        javac -cp "lib/junit-4.13.2.jar:lib/hamcrest-core-1.3.jar" -d classes $(find . -name "*.java")
+        javac -cp "lib/junit-4.13.2.jar:lib/hamcrest-core-1.3.jar" \
+          -d classes $(find MovieReservation/src -name "*.java")
 
     - name: Run JUnit tests
       run: |
-        java -cp "classes:lib/junit-4.13.2.jar:lib/hamcrest-core-1.3.jar" org.junit.runner.JUnitCore moviereservation.tests.ReservationJUnitTest
+        java -cp "classes:lib/junit-4.13.2.jar:lib/hamcrest-core-1.3.jar" \
+          org.junit.runner.JUnitCore moviereservation.tests.ReservationJUnitTest
